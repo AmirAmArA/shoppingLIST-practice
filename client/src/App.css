@@ -2,21 +2,3 @@
   margin-right:0.5rem;
 }
 
-.shade-enter { 
-  opacity: 0.01;
-}
-
-.shade-enter-active {
-  opacity: 1;
-  transition: opacity 1000ms ease-in;
-}
-
-.shade-exit{
-  opacity: 1;
-}
-
-.shade-exit-active{
-  opacity: 0.01;
-  transition: opacity 1000ms ease-in;
-
-}

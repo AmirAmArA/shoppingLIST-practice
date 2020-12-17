@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React, { Component ,useState} from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { v4 as uuid } from "uuid";
+import '../styles.css';
+
 
 export class ShoppingList extends Component {
   state = {
@@ -17,7 +21,8 @@ export class ShoppingList extends Component {
     const { items } = this.state;
     return (
       <Container>
-        <Button
+
+         <Button
           color="dark"
           style={{ marginBottom: "2rem" }}
           onClick={() => {
@@ -34,7 +39,7 @@ export class ShoppingList extends Component {
         <ListGroup>
           <TransitionGroup className="shopping-list">
             {items.map(({ id, name }) => (
-              <CSSTransition key={id} timeout={500} className="shade">
+              <CSSTransition key={id} timeout={200} className="shade">
                 <ListGroupItem>
                   <Button
                     className="remove-btn"
@@ -54,6 +59,8 @@ export class ShoppingList extends Component {
             ))}
           </TransitionGroup>
         </ListGroup>
+
+               
       </Container>
     );
   }
