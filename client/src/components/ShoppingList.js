@@ -20,6 +20,7 @@ export class ShoppingList extends Component {
 
   render() {
     const { items } = this.props.item;
+    console.log(items);
     return (
       <Container>
          <ListGroup>
@@ -46,10 +47,10 @@ export class ShoppingList extends Component {
   }
 }
 
-ShoppingList.propTypes = {
-  getItems: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
-}
+// ShoppingList.propTypes = {
+//   getItems: PropTypes.func.isRequired,
+//   item: PropTypes.object.isRequired
+// }
 
 const mapStateToProps = (state) => ({
   item: state.item

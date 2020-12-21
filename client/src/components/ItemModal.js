@@ -11,6 +11,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
+import '../styles.css';
+import { v4 as uuid} from 'uuid';
 
 class ItemModal extends Component {
   state = {
@@ -27,10 +29,22 @@ class ItemModal extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const newItem = {
+        id: uuid(),
+        name: this.state.name
+    }
+    this.props.addItem(newItem);
+    this.toggle();
+  }
   render() {
     return (
       <div>
         <Button
+          className="remove-btn"
           color="dark"
           style={{marginBottom: '2rem'}}
           onClick={this.toggle}
@@ -57,6 +71,13 @@ class ItemModal extends Component {
                   placeholder="Add Shopping Item"
                   onChange={this.onChange} 
                 />
+                <Button
+                  color="dark"
+                  style={{marginTop: '2rem'}}
+                  block
+                >
+                  Add Item
+                </Button>
               </FormGroup>
             </Form>
           </ModalBody>
@@ -66,4 +87,8 @@ class ItemModal extends Component {
   }
 }
 
-export default connect()(ItemModal);
+const mapStateToProps = (state) => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps,{addItem})(ItemModal);
